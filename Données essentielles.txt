@@ -4,7 +4,9 @@ Globales :
 
 	Nombre de candidats : int
 	Nombre de portes : int
-	tableau des temps des compétiteurs : int[]
+	tableau des temps manche 1 des compétiteurs : int[]
+	tableau des temps manche 2 des compétiteurs : int[]
+	tableau des moyennes temps: int[]
 	Tombés à l'eau : int
 
 Locales et spécifiques
@@ -25,5 +27,7 @@ Fonctions :
 	saisir nombre de portes : return int
 	saisir nombre de tombés à l'eau (après la course) : return int
 	
-	saisir tableau : return void (saisira le temps de chaque joueur, joueur 1 sera à l'index 0 etc...)
+	saisir tableaum1 : return void (saisira le temps de chaque joueur, joueur 1 sera à l'index 0 etc...)
+	saisir tableaum2 : return void (saisira le temps de chaque joueur, joueur 1 sera à l'index 0 etc...)
+	// L'idée est de d'abord afficher le classement sans
 	
