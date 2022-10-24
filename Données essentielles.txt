@@ -1,0 +1,29 @@
+Variables nécessaires:
+
+Globales :
+
+	Nombre de candidats : int
+	Nombre de portes : int
+	tableau des temps des compétiteurs : int[]
+	Tombés à l'eau : int
+
+Locales et spécifiques
+
+	Numéro de brassard : int
+	temps du compétiteur : double
+	nombre de portes ratées : int 
+	nombre de portes touchées : int
+	temps final : double
+
+Statements : 
+
+	if, else, elseif, for, while
+
+Fonctions :
+
+	saisir nombre de candidats : return int
+	saisir nombre de portes : return int
+	saisir nombre de tombés à l'eau (après la course) : return int
+	
+	saisir tableau : return void (saisira le temps de chaque joueur, joueur 1 sera à l'index 0 etc...)
+	
