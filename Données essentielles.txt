@@ -4,30 +4,31 @@ Globales :
 
 	Nombre de candidats : int
 	Nombre de portes : int
-	tableau des temps manche 1 des compétiteurs : int[]
-	tableau des temps manche 2 des compétiteurs : int[]
-	tableau des moyennes temps: int[]
-	Tombés à l'eau : int
+	tableau des temps manche 1 des compétiteurs : double[]
+	tableau des temps manche 2 des compétiteurs : double[]
+	tableau des moyennes temps: double[]
+	disqualifiés : int
 
 Locales et spécifiques
 
-	Numéro de brassard : int
-	temps du compétiteur : double
 	nombre de portes ratées : int 
 	nombre de portes touchées : int
-	temps final : double
-
-Statements : 
-
-	if, else, elseif, for, while
 
 Fonctions :
 
 	saisir nombre de candidats : return int
 	saisir nombre de portes : return int
-	saisir nombre de tombés à l'eau (après la course) : return int
 	
+	disqualifier : return void (disqualifie le joueur mis en paramètre)
 	saisir tableaum1 : return void (saisira le temps de chaque joueur, joueur 1 sera à l'index 0 etc...)
+	saisir portes_ratées : return int
+	saisir portes_touchées : return int
+	
 	saisir tableaum2 : return void (saisira le temps de chaque joueur, joueur 1 sera à l'index 0 etc...)
-	// L'idée est de d'abord afficher le classement sans
+	saisir portes_ratées : return int
+	saisir portes_touchées : return int
+	
+	// L'idée est de d'abord afficher le classement de chaque manche puis le classement final après application des pénalités.
+	calcul tempsCompensé : return double
+
 	
