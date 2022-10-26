@@ -25,27 +25,27 @@ public class CourseCanoe {
 
         nbPortes = saisirNbPortes();
 
-        for(int i = 1; i <= nbCandidats; i++){
+        for(int i = 0; i <= nbCandidats; i++){
 
             tabTempsManche1 = new double[nbCandidats];
             tabTempsManche2 = new double[nbCandidats];
             tabClassementFinal = new double[nbCandidats];
 
-            System.out.println("Informations pour le " + i + " ème participant");
+            System.out.println("Informations pour le " + (i+1) + " ème participant");
             System.out.println("-----------------------------------------------");
 
             boolean disqualifié = saisirDisqualification(tabClassementFinal, nbCandidats);
 
             if(!disqualifié){
 
-                saisirTabTemps(tabTempsManche1, nbCandidats, "Veuillez saisir le temps pour le " + i + "ème participant pour la manche 1: ", i);
-                nbPortesRateesManche1 = saisirInt(nbPortes, "Veuillez saisir le nombre de portes ratées à la manche 1 pour le " + i + "ème participant : ");
-                nbPortesToucheesManche1 = saisirInt(nbPortes, "Veuillez saisir le nombre de portes touchées à la manche 1 pour le " + i + "ème participant : ");
+                saisirTabTemps(tabTempsManche1, nbCandidats, "Veuillez saisir le temps pour le " + (i+1) + "ème participant pour la manche 1: ", (i+1));
+                nbPortesRateesManche1 = saisirInt(nbPortes, "Veuillez saisir le nombre de portes ratées à la manche 1 pour le " + (i+1) + "ème participant : ");
+                nbPortesToucheesManche1 = saisirInt(nbPortes, "Veuillez saisir le nombre de portes touchées à la manche 1 pour le " + (i+1) + "ème participant : ");
                 tempsCompensesManche1 = tempsCompensé(nbPortesToucheesManche1, nbPortesRateesManche1, tabTempsManche1[i]);
 
-                saisirTabTemps(tabTempsManche2, nbCandidats, "Veuillez saisir le temps pour le " + i + "ème participant pour la manche 2: ", i);
-                nbPortesRateesManche2 = saisirInt(nbPortes, "Veuillez saisir le nombre de portes ratées à la manche 2 pour le " + i + "ème participant : ");
-                nbPortesToucheesManche2 = saisirInt(nbPortes, "Veuillez saisir le nombre de portes touchées à la manche 2 pour le " + i + "ème participant : ");
+                saisirTabTemps(tabTempsManche2, nbCandidats, "Veuillez saisir le temps pour le " + (i+1) + "ème participant pour la manche 2: ", (i+1));
+                nbPortesRateesManche2 = saisirInt(nbPortes, "Veuillez saisir le nombre de portes ratées à la manche 2 pour le " + (i+1) + "ème participant : ");
+                nbPortesToucheesManche2 = saisirInt(nbPortes, "Veuillez saisir le nombre de portes touchées à la manche 2 pour le " + (i+1) + "ème participant : ");
                 tempsCompensesManche2 = tempsCompensé(nbPortesToucheesManche2, nbPortesRateesManche2, tabTempsManche1[i]);
 
                 moyenneTempsCompenses = (tempsCompensesManche1 + tempsCompensesManche2) / 2;
@@ -57,8 +57,8 @@ public class CourseCanoe {
 
     }
     public static int saisirInt(int pfBorne, String pfMessage){
-        int value = 0;
-        while(value > pfBorne){
+        int value = -1;
+        while(value > pfBorne || value < 0){
             System.out.print(pfMessage);
             value = scanner.nextInt();
         }
