@@ -375,7 +375,7 @@ public class SAEv2 {
 
 
         min =0;
-        System.out.println("Le " + indice +" ème joueur a réalisé un temps de " +pfTemps+ " millisecondes, c'est-à-dire un temps de "+pfTemps/1000+" secondes.");
+        System.out.println("Le " + pfIndice +" ème joueur a réalisé un temps de " +pfTemps+ " millisecondes, c'est-à-dire un temps de "+pfTemps/1000+" secondes.");
         secondes = pfTemps/1000;
         while(secondes > 60){
             min += 1;
