@@ -8,7 +8,7 @@ public class SAEv2 {
      * @param args IN : convention
      */
     public static void main(String[] args){
-
+        // initialisation
         int nbCandidats, nbCandidatsRestants, nbPortes;
         double[] tabTempsManche1;
         double[] tabTempsManche2;
@@ -20,47 +20,70 @@ public class SAEv2 {
 
         double tempsCompensesManche1, tempsCompensesManche2, moyenneTempsCompenses;
 
-
+        
+        // traitement
+        
+        // on détermine le nombre de candidats
         nbCandidats = saisirNbCandidats();
-
+        
+        // on créer des tableaux qui ont pour taille le nombre de candidat
         tabTempsManche1 = new double[nbCandidats];
         tabTempsManche2 = new double[nbCandidats];
         tabClassementFinal = new double[nbCandidats];
         numeroDeBrassard = new int[nbCandidats];
+        // on initialise le nombre de candidat restant à 0 mais il sera amené à changer (cette variable va servir à avoir le nombre de candidat restant (si il y a des cnadidats disqualifiés))
         nbCandidatsRestants = 0;
 
+        // on fait saisir le nombre de portes
         nbPortes = saisirNbPortes();
 
+        // on vient "définir" les candiats (si ils sont disqualifiés ou pas, leur temps de course, ...)
         for(int i = 0; i < nbCandidats; i++){
 
             System.out.println("Informations pour le " + (i+1) + " ème participant");
             System.out.println("-----------------------------------------------");
-
+            // on demande si le candidat est disqualifié
             boolean disqualifié = saisirDisqualification();
-
+            // si il n'est pas disqualifié alors o
             if(!disqualifié){
+                // on demande le temps de la course de la manche 1
                 saisirTabTemps(tabTempsManche1, "Veuillez saisir le temps pour le " + (i+1) + "ème participant pour la manche 1: ", (i));
+                // on demande le nombre de porte ratées lors de la manche 1
                 nbPortesRateesManche1 = saisirInt(nbPortes, "Veuillez saisir le nombre de portes ratées à la manche 1 pour le " + (i+1) + "ème participant : ");
+                // on demande le nombre de porte touchées lors de la manche 1
                 nbPortesToucheesManche1 = saisirInt(nbPortes, "Veuillez saisir le nombre de portes touchées à la manche 1 pour le " + (i+1) + "ème participant : ");
+                // on vérifie que le nombre porte est cohérent par rapport au nombre de porte rentré au début du programme
                 while (nbPortesToucheesManche1 + nbPortesRateesManche1 > nbPortes) {
                     nbPortesToucheesManche1 = saisirInt(nbPortes, "Veuillez saisir le nombre de portes touchées à la manche 1 pour le " + (i+1) + "ème participant : ");
                 }
+                // on calcul le temps final de la manche 1
                 tempsCompensesManche1 = tempsCompensé(nbPortesToucheesManche1, nbPortesRateesManche1, tabTempsManche1[i]);
-
+                
+                // on demande le temps de la course de la manche 2
                 saisirTabTemps(tabTempsManche2, "Veuillez saisir le temps pour le " + (i+1) + "ème participant pour la manche 2: ", (i));
+                // on demande le nombre de porte ratées lors de la manche 2
                 nbPortesRateesManche2 = saisirInt(nbPortes, "Veuillez saisir le nombre de portes ratées à la manche 2 pour le " + (i+1) + "ème participant : ");
+                // on demande le nombre de porte touchées lors de la manche 2
                 nbPortesToucheesManche2 = saisirInt(nbPortes, "Veuillez saisir le nombre de portes touchées à la manche 2 pour le " + (i+1) + "ème participant : ");
+                // on vérifie que le nombre porte est cohérent par rapport au nombre de porte rentré au début du programme
                 while (nbPortesToucheesManche2 + nbPortesRateesManche2 > nbPortes) {
                     nbPortesToucheesManche2 = saisirInt(nbPortes, "Veuillez saisir le nombre de portes touchées à la manche 1 pour le " + (i+1) + "ème participant : ");
                 }
+                // on calcul le temps final de la manche 2
                 tempsCompensesManche2 = tempsCompensé(nbPortesToucheesManche2, nbPortesRateesManche2, tabTempsManche2[i]);
 
+                // on crée au candidat un numéro de brassard
                 numeroDeBrassard[i] = i + 1;
 
+                // on calcul la moyenne des 2 temps de courses
                 moyenneTempsCompenses = (tempsCompensesManche1 + tempsCompensesManche2) / 2;
+                // on rajoute son score dans le tableau des scores
                 tabClassementFinal[nbCandidatsRestants] = moyenneTempsCompenses;
 
+                // on affiche son temps converti
                 System.out.println(afficherTempsConverti(tabClassementFinal[i], i));
+                
+                // on ajoute un candidat au nombre de candidat restant
                 nbCandidatsRestants++;
 
             }
@@ -326,7 +349,7 @@ public class SAEv2 {
         }
         // si il y a plusieurs premiers
         else if (nbPremier >= 2) {
-            System.out.println("Nous avons " + nbPremier + " ex æquo  pour la première position avec un temps de " + premier + " millisecondes qui sont les brassard n° ");
+            System.out.println("Nous avons " + nbPremier + " ex æquo  pour la première position avec un temps de " + premier + " millisecondes qui sont les brassards n° ");
             for (i = 0; i < nbPremier; i++) {
                 System.out.println(pfBrassard[indicePremier[i]]);
             }
@@ -340,7 +363,7 @@ public class SAEv2 {
         }
         // si il y a plusieurs deuxième
         else if (nbDeuxieme >= 2) {
-            System.out.println("Nous avons " + nbDeuxieme + " ex æquo  pour la deuxième position avec un temps de " + deuxieme + " millisecondes qui les brassard n°");
+            System.out.println("Nous avons " + nbDeuxieme + " ex æquo  pour la deuxième position avec un temps de " + deuxieme + " millisecondes qui les brassards n°");
             for (i = 0; i < nbDeuxieme; i++) {
                 System.out.println(pfBrassard[indiceDeuxieme[i]]);
             }
@@ -354,7 +377,7 @@ public class SAEv2 {
         }
         // si il y a plusieurs troisième
         else if (nbTroisieme >= 2) {
-            System.out.println("Nous avons " + nbTroisieme + " ex æquo  pour la troisième position avec un temps de " + troisieme + " millisecondes qui sont les brassard n°");
+            System.out.println("Nous avons " + nbTroisieme + " ex æquo  pour la troisième position avec un temps de " + troisieme + " millisecondes qui sont les brassards n°");
             for (i = 0; i < nbTroisieme; i++) {
                 System.out.println(pfBrassard[indiceTroisieme[i]]);
             }
