@@ -367,7 +367,7 @@ public class SAEv2 {
      * @param indice IN : indice du joueur (place sur le podium)
      * @return le temps converti
      */
-    public static String afficherTempsConverti(double pfTemps, int indice){
+    public static String afficherTempsConverti(double pfTemps, int pfIndice){
         // initialisation du message, des minutes et des secondes
         String message = "";
         int min;
