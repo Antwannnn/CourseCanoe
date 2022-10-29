@@ -173,17 +173,17 @@ public class SAEv2 {
      * @param tempsManche IN : le score actuel du candidat (avec de rajoter les pénalités)
      * @return le temps compensé (le temps + les pénalités)
      */
-    public static double tempsCompensé(int portesratées, int portestouchées, double tempsManche){
+    public static double tempsCompensé(int pfPortesRatees, int pfPortesTouchees, double tempsManche){
         // initialisation
         double tempsFinal, tempsPenalite;
 
         // calcul des pénalités pour chaque portes ratées
-        int pénalitéPortesRatées = 50*1000*portesratées;
+        int penalitePortesRatees = 50*1000*pfPortesRatees;
         // calcul des pénalités pour chaque portes touchées
-        int pénalitéPortesTouchées = 2*1000*portestouchées;
+        int penalitePortesTouchees = 2*1000*pfPortesTouchees;
 
         // somme des pénalités des portes touchées et ratées
-        tempsPenalite = pénalitéPortesTouchées + pénalitéPortesRatées;
+        tempsPenalite = penalitePortesTouchees + penalitePortesRatees;
 
         // somme du score final (score de départ + pénalités)
         tempsFinal = tempsManche + tempsPenalite;
